@@ -9,6 +9,8 @@ This is a little VueJS exercise to create a to do app. It has the following feat
 ![Concept](concept/concept.png)
 
 ## Implementation
+The finished implementation is deployed here: https://marincomics.com/taskradar/
+
 ![Concept](concept/screenshot.png)
 
 ## Instructions from VueJS Template
