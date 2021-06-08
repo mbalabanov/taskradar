@@ -25,7 +25,7 @@
     <div class="row">
       <div v-for="(task, index) in tasks" :key="index" class="col-md-6">
         <div class="card m-1 p-2">
-          <h4 class="card-title fw-lighter">Task {{ index }}</h4>
+          <h4 class="card-title fw-lighter">Task {{ index + 1 }}</h4>
           <div class="fs-5 fw-lighter task-description border-bottom">
             <span
               :class="{
