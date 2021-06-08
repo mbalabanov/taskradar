@@ -136,6 +136,7 @@ export default {
       this.task = this.tasks[index].name;
       this.editedTask = index;
       window.scrollTo(0, 0);
+      this.$refs.taskInput.focus();
     },
   },
 };
