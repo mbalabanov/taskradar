@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="container mt-5">
+    <div class="container my-5">
       <div class="row">
         <div class="col-md-8 offset-md-2">
           <h1 class="fw-lighter text-center">

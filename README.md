@@ -6,6 +6,7 @@ This is a little VueJS exercise to create a to do app. It has the following feat
 - Existing tasks can be marked done and the number of done tasks is displayed.
 
 ## Concept
+This is the original sketch 
 ![Concept](concept/concept.png)
 
 ## Implementation

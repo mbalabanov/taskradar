@@ -14,12 +14,22 @@
         aria-describedby="save-task"
         @keyup.enter="saveTask"
         id="taskInput"
+        ref="taskInput"
       />
       <button class="btn btn-primary" @click="saveTask">Save task</button>
     </div>
-    <div class="row">
-      <div class="col-md-12">
-        <h3 class="fw-lighter text-center">You have <strong>{{ countTasks() }}</strong> Tasks</h3>
+    <div class="row alert alert-light">
+      <div class="col-md-3">
+        <h3 class="fw-lighter text-center">Total Tasks: <span class="badge bg-dark">{{ countTasks() }}</span></h3>
+      </div>
+      <div class="col-md-3">
+        <h3 class="fw-lighter text-center">Open: <span class="badge bg-secondary">{{ countOpenTasks() }}</span></h3>
+      </div>
+      <div class="col-md-3">
+        <h3 class="fw-lighter text-center">Doing: <span class="badge bg-warning">{{ countDoingTasks() }}</span></h3>
+      </div>
+      <div class="col-md-3">
+        <h3 class="fw-lighter text-center">Done: <span class="badge bg-success">{{ countDoneTasks() }}</span></h3>
       </div>
     </div>
     <div class="row">
@@ -66,10 +76,16 @@
 
 <script>
 export default {
-  name: "Taskradar",
+  name: "Taskradar", // Rename taskradar.vue to "Taskradar" (capitalized)
   props: {
     msg: String,
   },
+
+/* 
+  Make Task ITEMS separate COMPONENTS.
+  Make Task LISTS separate COMPONENTS.
+  Split up the code into separate files (e.g. each button with settings).
+*/
 
   data() {
     return {
@@ -113,14 +129,45 @@ export default {
       this.task = "";
     },
 
+    // DRY!!! One single counter function but used in different function which return 
+
     countTasks() {
-      console.log(this.tasks.length);
       return this.tasks.length;
+    },
+
+    countOpenTasks() {
+      let openTaskCount = 0;
+      for(let singleTask of this.tasks) {
+        if(singleTask.statusList === 'open') {
+          openTaskCount++;
+        }
+      }
+      return openTaskCount;
+    },
+
+    countDoingTasks() {
+      let doingTaskCount = 0;
+      for(let singleTask of this.tasks) {
+        if(singleTask.statusList === 'doing') {
+          doingTaskCount++;
+        }
+      }
+      return doingTaskCount;
+    },
+
+    countDoneTasks() {
+      let doneTaskCount = 0;
+      for(let singleTask of this.tasks) {
+        if(singleTask.statusList === 'done') {
+          doneTaskCount++;
+        }
+      }
+      return doneTaskCount;
     },
 
     statusChange(index) {
       let newIterator = this.statusList.indexOf(this.tasks[index].statusList);
-      if (++newIterator > 2) newIterator = 0;
+      if (++newIterator > 2) newIterator = 0; // Use curly braces and longer notation for clarity 
       this.tasks[index].statusList = this.statusList[newIterator];
     },
 
